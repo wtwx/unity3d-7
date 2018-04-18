@@ -53,6 +53,10 @@
   <ItemGroup>
      <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\ShootSoundCtr2.cs" />
      <Compile Include="Assets\Scripts\BornFirePoint.cs" />
+     <Compile Include="Assets\Scripts\Enemy_Stay.cs" />
+     <Compile Include="Assets\Scripts\EnemyLife.cs" />
+     <Compile Include="Assets\Scripts\FireSndControl.cs" />
+     <Compile Include="Assets\Scripts\HitArea.cs" />
      <Compile Include="Assets\Scripts\MoveScript_Rigibody.cs" />
      <Compile Include="Assets\Scripts\MoveScripts_CC.cs" />
      <Compile Include="Assets\Scripts\ParticalType.cs" />

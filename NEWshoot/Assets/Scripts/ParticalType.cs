@@ -8,7 +8,8 @@ public enum PARTICLETYPE
     CONCRETE,
     WOOD,
     DIRT,
-    METAL
+    METAL,
+    BLOOD
 }
 
 public class ParticalType : MonoBehaviour {

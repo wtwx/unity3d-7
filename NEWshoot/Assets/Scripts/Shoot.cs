@@ -16,6 +16,7 @@ public class Shoot : MonoBehaviour {
     public GameObject goConcrete = null;
     public GameObject goDirt= null;
     public GameObject goWood = null;
+    public GameObject goBlood = null;
 
     private bool isMouseDown = false;
     private bool isFireOnce = false;
@@ -107,6 +108,31 @@ public class Shoot : MonoBehaviour {
                 pt = PARTICLETYPE.NULL;
             }
             //print(pt.ToString());
+            if(hitInfo .collider.gameObject .GetComponent<HitArea>() != null)
+            {
+                HitArea hitareaScript = hitInfo.collider.gameObject.GetComponent<HitArea>();
+                hitareaScript.isHit  = true;
+                switch (hitareaScript .hitarea)
+                {
+                    case EHitArea.Head:
+                        hitareaScript.damageValue = HitArea.headDamage;
+                        pt = PARTICLETYPE.BLOOD;
+                        break;
+                    case EHitArea.Body:
+                        hitareaScript.damageValue = HitArea.bodyDamage;
+                        pt = PARTICLETYPE.BLOOD;
+                        break;
+                    case EHitArea.Arm:
+                        hitareaScript.damageValue = HitArea.armDamage;
+                        pt = PARTICLETYPE.BLOOD;
+                        break;
+                    case EHitArea.Leg:
+                        hitareaScript.damageValue = HitArea.legDamage;
+                        pt = PARTICLETYPE.BLOOD;
+                        break;
+                }
+
+            }
             switch(pt)
             {
                 case PARTICLETYPE.NULL:
@@ -126,6 +152,10 @@ public class Shoot : MonoBehaviour {
                 case PARTICLETYPE.WOOD:
                      if(goWood!=null)
                         GameObject.Instantiate(goWood,hitInfo.point,Quaternion.FromToRotation(Vector3.up,hitInfo.normal));
+                    break;
+                case PARTICLETYPE.BLOOD:
+                    if (goBlood != null)
+                        GameObject.Instantiate(goBlood, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
                     break;
 
             }
