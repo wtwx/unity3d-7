@@ -90,6 +90,11 @@ public class Enemy_Stay : MonoBehaviour {
                 GetComponent<Animation>().CrossFade("Crouch",doneTime);
                 if (gunFire != null) {
                     gunFire.SetActive(false);
+
+                }
+                if (mainTarget.gameObject.GetComponent<MainLife>()!=null)
+                {
+                    mainTarget.gameObject.GetComponent<MainLife>().isNeedCalLife = false;
                 }
             break;
             case EEnemyStatus.StandingFire:
@@ -98,12 +103,20 @@ public class Enemy_Stay : MonoBehaviour {
                 {
                     gunFire.SetActive(true);
                 }
+                if (mainTarget.gameObject.GetComponent<MainLife>() != null)
+                {
+                    mainTarget.gameObject.GetComponent<MainLife>().isNeedCalLife = true;
+                }
                 break;
             case EEnemyStatus.Dead:
                 ToDead();
                  if (gunFire != null)
                 {
                     gunFire.SetActive(false);
+                }
+                if (mainTarget.gameObject.GetComponent<MainLife>() != null)
+                {
+                    mainTarget.gameObject.GetComponent<MainLife>().isNeedCalLife = false;
                 }
                 //GetComponent<Animation>().CrossFade("Crouch", doneTime);
                 break;
