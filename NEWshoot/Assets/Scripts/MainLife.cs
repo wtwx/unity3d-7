@@ -42,7 +42,7 @@ public class MainLife : MonoBehaviour {
 
     void OnGUI()
     {
-        GUILayout.Label("生命值： "+life);
+        //GUILayout.Label("生命值： "+life);
     }
 
     IEnumerator WaitToResetCalLife(float waittime)
