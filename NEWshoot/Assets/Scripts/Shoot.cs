@@ -27,7 +27,7 @@ public class Shoot : MonoBehaviour {
     public GameObject goGunSound = null;
 
     public int fAmmo;
-
+    public GameObject UI = null;
     void Awake()
     {
         if(goGunFire!=null)
@@ -42,7 +42,7 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetMouseButtonDown(0) && fAmmo>0)
+        if(Input.GetMouseButtonDown(0) && fAmmo>0 && UI.GetComponent<UI>().bShowWin==false)
         {
             isMouseDown = true;
             if(goGunFire!=null)
@@ -59,16 +59,16 @@ public class Shoot : MonoBehaviour {
                 goGunFire.SetActive(false);
             }
         }
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && UI.GetComponent<UI>().bShowWin == false)
         {
             GetComponent<Camera>().fieldOfView = oldfov / 2.0f;
         }
-        if(Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && UI.GetComponent<UI>().bShowWin == false)
         {
             GetComponent<Camera>().fieldOfView = oldfov;
         }
 
-        if(isMouseDown&&!isFireOnce&& fAmmo>0)
+        if (isMouseDown && !isFireOnce && fAmmo > 0 && UI.GetComponent<UI>().bShowWin == false)
         {
             StartCoroutine(WaitForShoot(fireTime));
         }
