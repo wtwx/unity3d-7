@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\ParticalType.cs" />
      <Compile Include="Assets\Scripts\RotateMouse.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
+     <Compile Include="Assets\Scripts\ShootRespones.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />
      <Compile Include="Assets\Scripts\WayPoint_Behavior.cs" />

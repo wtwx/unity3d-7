@@ -111,6 +111,12 @@ public class Shoot : MonoBehaviour {
                 pt = PARTICLETYPE.NULL;
             }
             //print(pt.ToString());
+
+            if(hitInfo.collider.gameObject.GetComponent<ShootRespones>()!=null)
+            {
+                hitInfo.collider.gameObject.GetComponent<ShootRespones>().isHitFlag = true;
+                hitInfo.collider.gameObject.GetComponent<ShootRespones>().hitInfo = hitInfo;
+            }
             if(hitInfo .collider.gameObject .GetComponent<HitArea>() != null)
             {
                 HitArea hitareaScript = hitInfo.collider.gameObject.GetComponent<HitArea>();
