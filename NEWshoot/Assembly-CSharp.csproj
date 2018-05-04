@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AudioExplosion.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DestroyExplosion.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\Explosion_CloseLight.cs" />
      <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\ShootSoundCtr2.cs" />
      <Compile Include="Assets\Scripts\BornBehavior.cs" />
      <Compile Include="Assets\Scripts\BornFirePoint.cs" />
@@ -66,6 +69,7 @@
      <Compile Include="Assets\Scripts\ParticalType.cs" />
      <Compile Include="Assets\Scripts\RotateMouse.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
+     <Compile Include="Assets\Scripts\ShootBoom.cs" />
      <Compile Include="Assets\Scripts\ShootRespones.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />

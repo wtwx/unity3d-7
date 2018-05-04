@@ -30,6 +30,7 @@ public class Shoot : MonoBehaviour {
     public GameObject UI = null;
     void Awake()
     {
+        Screen.lockCursor = true;
         if(goGunFire!=null)
         {
             goGunFire.SetActive(false);
@@ -42,6 +43,10 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Screen.lockCursor = false;
+        }
         if(Input.GetMouseButtonDown(0) && fAmmo>0 && UI.GetComponent<UI>().bShowWin==false)
         {
             isMouseDown = true;
@@ -49,6 +54,7 @@ public class Shoot : MonoBehaviour {
             {
                 goGunFire.SetActive(true);
             }
+            Screen.lockCursor = true;
             
         }
         if(Input.GetMouseButtonUp(0))
@@ -117,6 +123,13 @@ public class Shoot : MonoBehaviour {
                 hitInfo.collider.gameObject.GetComponent<ShootRespones>().isHitFlag = true;
                 hitInfo.collider.gameObject.GetComponent<ShootRespones>().hitInfo = hitInfo;
             }
+
+            if(hitInfo.collider.gameObject.GetComponent<ShootBoom>()!=null)
+            {
+                hitInfo.collider.gameObject.GetComponent<ShootBoom>().isExplosionFlag = true;
+                hitInfo.collider.gameObject.GetComponent<ShootBoom>().rct = hitInfo;
+            }
+
             if(hitInfo .collider.gameObject .GetComponent<HitArea>() != null)
             {
                 HitArea hitareaScript = hitInfo.collider.gameObject.GetComponent<HitArea>();

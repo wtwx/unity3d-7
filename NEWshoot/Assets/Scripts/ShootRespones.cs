@@ -8,6 +8,8 @@ public class ShootRespones : MonoBehaviour {
     [HideInInspector]
     public RaycastHit hitInfo;
     public float forceVal = 1.0f;
+    public GameObject target = null;
+    private bool isExpOnce = true;
     void Awake()
     {
         if(gameObject.GetComponent<Rigidbody>()==null)
@@ -31,6 +33,18 @@ public class ShootRespones : MonoBehaviour {
         {
             isHitFlag = false;
             GetComponent<Rigidbody>().AddForce(-hitInfo.normal * forceVal, ForceMode.Impulse);
+        }
+
+        if(target!=null&&target.GetComponent<ShootBoom>()!=null&&isExpOnce)
+        {
+            if(target.GetComponent<ShootBoom>().isExplosionFlag&&Vector3.Distance(transform.position,target.transform.position)<=target.GetComponent<ShootBoom>().damageDistance)
+            {
+                isExpOnce = false;
+                Vector3 dir = (transform.position - target.transform.position).normalized;
+                GetComponent<Rigidbody>().AddForce(dir*target.GetComponent<ShootBoom>().expForce*
+                    (1.0f-Vector3.Distance(transform.position,target.transform.position)/target.GetComponent<ShootBoom>().damageDistance)
+                    ,ForceMode.Impulse);
+            }
         }
     }
 }
